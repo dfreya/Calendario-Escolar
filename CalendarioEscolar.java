@@ -25,14 +25,14 @@ public class CalendarioEscolar
      }
      public void avanzarFecha(){
          dia = dia +1;
-         if (dia == 30){
+         if (dia == 31){
              dia = 1;
              mes = mes +1;
-             if (mes == 12){
+             if (mes == 13){
                  dia = 1;
                  mes = 1;
                  year = year +1;
-                 if (year == 99){
+                 if (year == 100){
                      dia = 1;
                      mes = 1;
                      year = 1;
