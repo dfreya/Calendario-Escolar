@@ -8,60 +8,32 @@
 public class CalendarioEscolar
 {
     //
-    private int dia;
+    private DisplayDosDigitos dia;
     //
-    private int mes;
+    private DisplayDosDigitos mes;
     //
-    private int year;
+    private DisplayDosDigitos year;
+    
     public CalendarioEscolar(){
-        dia = 1;
-        mes = 1;
-        year = 1;
+      dia = new DisplayDosDigitos(31);
+      mes = new DisplayDosDigitos(13);
+      year = new DisplayDosDigitos(100);
     }       
     public void fijarFecha(int nuevoDia, int nuevoMes, int nuevoYear){
-         dia = nuevoDia;
-         mes = nuevoMes;
-         year = nuevoYear;
-     }
-     public void avanzarFecha(){
-         dia = dia +1;
-         if (dia == 31){
-             dia = 1;
-             mes = mes +1;
-             if (mes == 13){
-                 dia = 1;
-                 mes = 1;
-                 year = year +1;
-                 if (year == 100){
-                     dia = 1;
-                     mes = 1;
-                     year = 1;
-                 }
+         dia.setValor(nuevoDia);
+         mes.setValor(nuevoMes);
+         year.setValor(nuevoYear);
+    }
+    public void avanzarFecha(){
+         dia.incrementaValor();
+         if (dia.getValor() == 1){
+             mes.incrementaValor();
+             if (mes.getValor() == 1){
+                 year.incrementaValor();
              }
          }
-    }
-    public String obtenerFecha(){
-        String diaCadena;
-        if (dia < 10){
-            diaCadena = "0" + dia;
-        }
-        else{
-            diaCadena = "" + dia;
-        }
-        String mesCadena;
-        if (mes < 10){
-           mesCadena = "0" + mes;
-        }
-        else{
-            mesCadena = "" + mes;
-        }
-        String yearCadena;
-        if (year <10){
-            yearCadena = "0"+ year;
-        }
-        else{
-            yearCadena = "" + year;
-        }
-        return diaCadena + "-" + mesCadena + "-" + yearCadena;
+     }
+       public String mostrarFecha(){
+        return dia.getValorDelDisplay() + "-" + mes.getValorDelDisplay() + "-" + year.getValorDelDisplay();
     }
 }
